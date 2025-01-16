@@ -72,27 +72,11 @@ FROM kalilinux/kali-rolling
 
 # Update and install essential cyber forensics tools
 RUN apt-get update && apt-get install -y \
-    autopsy \
-    sleuthkit \
+   
     binwalk \
     foremost \
     testdisk \
-    scalpel \
-    hashdeep \
-    exiftool \
-    volatility3 \
-    tshark \
-    tcpdump \
     nmap \
-    netcat \
-    whois \
-    curl \
-    wget \
-    python3-pip \
-    steghide \
-    outguess \
-    stegsnow \
-    zsteg \
     && apt-get clean
 
 # Install Python tools for forensic tasks
