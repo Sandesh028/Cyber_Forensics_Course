@@ -73,6 +73,10 @@ RUN apt-get update && apt-get install -y \
     curl \
     wget \
     python3-pip \
+    steghide \
+    outguess \
+    stegsnow \
+    zsteg \
     && apt-get clean
 
 # Install Python tools for forensic tasks
