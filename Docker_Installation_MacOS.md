@@ -54,36 +54,11 @@ Paste the following content into the `Dockerfile` using your preferred editor:
 ```dockerfile
 FROM kalilinux/kali-rolling
 
-# Update and install essential cyber forensics tools
-RUN apt-get update && apt-get install -y \
-    autopsy \
-    sleuthkit \
-    binwalk \
-    foremost \
-    testdisk \
-    scalpel \
-    hashdeep \
-    exiftool \
-    volatility3 \
-    tshark \
-    tcpdump \
-    nmap \
-    netcat \
-    whois \
-    curl \
-    wget \
-    python3-pip \
-    steghide \
-    outguess \
-    stegsnow \
-    zsteg \
-    && apt-get clean
+RUN sed -i 's/http:\/\/http.kali.org\/kali/http:\/\/archive.kali.org\/kali/g' /etc/apt/sources.list 
 
-# Install Python tools for forensic tasks
-RUN pip3 install pytsk3 yara-python pefile pandas
+RUN apt-get update && apt-get install -y nmap tcpdump
 
-# Allow passwordless sudo
-RUN echo "root ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers
+RUN echo 'ALL ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 CMD ["/bin/bash"]
 ```
